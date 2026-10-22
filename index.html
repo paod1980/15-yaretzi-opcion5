@@ -358,11 +358,14 @@
             letter-spacing: 1px;
         }
 
+        /* APLICACIÓN DE CURSIVA ELEGANTE 'GREAT VIBES' A NOMBRES */
         .family-card p {
-            color: #e5e7eb;
-            font-size: 1rem;
+            font-family: 'Great Vibes', cursive !important;
+            font-size: 2.1rem !important;
+            color: #ffffff;
             margin: 4px 0;
-            line-height: 1.4;
+            line-height: 1.3;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
         /* FECHA Y TEMPORIZADOR */
@@ -451,7 +454,34 @@
             color: #d1d5db;
             font-size: 0.95rem;
             margin-bottom: 15px;
-            line-height: 1.4;
+            line-height: 1.5;
+        }
+
+        .event-info strong {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 0.85rem;
+            color: #8ab4f8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* TIPOGRAFÍA GREAT VIBES APLICADA A LOS NOMBRES DEL TEMPLO Y SALÓN */
+        .venue-name {
+            font-family: 'Great Vibes', cursive !important;
+            font-size: 2rem !important;
+            color: #ffffff;
+            display: block;
+            margin: 4px 0;
+            line-height: 1.2;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .venue-address {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            display: block;
+            margin-top: 4px;
         }
 
         .btn-map {
@@ -538,6 +568,8 @@
             .final-message { font-size: 3rem; }
             .welcome-title { font-size: 2.8rem; }
             .welcome-name { font-size: 3.6rem; }
+            .family-card p { font-size: 1.9rem !important; }
+            .venue-name { font-size: 1.8rem !important; }
         }
 
         @media (max-width: 420px) {
@@ -546,6 +578,8 @@
             .timer-block { padding: 12px 2px; }
             .timer-number { font-size: 1.5rem; }
             .timer-label { font-size: 0.65rem; }
+            .family-card p { font-size: 1.7rem !important; }
+            .venue-name { font-size: 1.6rem !important; }
         }
     </style>
 </head>
@@ -627,17 +661,17 @@
         <div class="glass-box">
             <div class="family-grid">
                 <div class="family-card">
-    <div class="family-icon"><i class="fas fa-heart"></i></div>
-    <h3>Mis Padres</h3>
-    <p style="margin-bottom: 12px;">Pablo Arturo Orozco Dorantes</p>
-    <p>Claudia Antonia Pacheco Chi</p>
-</div>
+                    <div class="family-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Mis Padres</h3>
+                    <p>Pablo Arturo Orozco Dorantes</p>
+                    <p>Claudia Antonia Pacheco Chi</p>
+                </div>
                 <div class="family-card">
-    <div class="family-icon"><i class="fas fa-star"></i></div>
-    <h3>Mis Padrinos</h3>
-    <p style="margin-bottom: 12px;">Manuel Ferraez <span style="margin: 0 6px;">y</span> Alma Pacheco</p>
-    <p>Luis Domenzain <span style="margin: 0 6px;">y</span> Berta Aldama</p>
-</div>
+                    <div class="family-icon"><i class="fas fa-star"></i></div>
+                    <h3>Mis Padrinos</h3>
+                    <p>Manuel Ferraez y Alma Pacheco</p>
+                    <p>Luis Domenzain y Berta Aldama</p>
+                </div>
             </div>
         </div>
 
@@ -677,11 +711,11 @@
                     <div>
                         <div class="event-icon"><i class="fas fa-church"></i></div>
                         <h3 class="event-title">Ceremonia Religiosa</h3>
-                        <p class="event-info">
+                        <div class="event-info">
                             <strong>Hora:</strong> 20:30 hrs<br>
-                            <strong>Iglesia:</strong> San José Obrero<br>
-                            Calle 133 No. 516 (esq. Calle 54), Col. San José Tecoh II, C.P. 97299, Mérida, Yuc.
-                        </p>
+                            <strong>Iglesia:</strong> <span class="venue-name">San José Obrero</span>
+                            <span class="venue-address">Calle 133 No. 516 (esq. Calle 54), Col. San José Tecoh II, C.P. 97299, Mérida, Yuc.</span>
+                        </div>
                     </div>
                     <a href="https://maps.google.com/?q=San+Jose+Obrero+San+Jose+Tecoh+Merida" target="_blank" class="btn-map">
                         <i class="fas fa-map-marker-alt"></i> Ver en Maps
@@ -693,11 +727,11 @@
                     <div>
                         <div class="event-icon"><i class="fas fa-glass-cheers"></i></div>
                         <h3 class="event-title">Recepción</h3>
-                        <p class="event-info">
+                        <div class="event-info">
                             <strong>Hora:</strong> 21:30 hrs<br>
-                            <strong>Local:</strong> Sala de Fiestas Los Ceibos<br>
-                            Calle 50 x 149 y 151, Cinco Colonias, Mérida, Yuc.
-                        </p>
+                            <strong>Local:</strong> <span class="venue-name">Sala de Fiestas Los Ceibos</span>
+                            <span class="venue-address">Calle 50 x 149 y 151, Cinco Colonias, Mérida, Yuc.</span>
+                        </div>
                     </div>
                     <a href="https://maps.google.com/?q=Sala+de+Fiestas+Los+Ceibos+Cinco+Colonias+Merida" target="_blank" class="btn-map">
                         <i class="fas fa-map-marker-alt"></i> Ver en Maps
