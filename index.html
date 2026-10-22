@@ -183,6 +183,16 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            
+            /* ESTILOS DE ANIMACIÓN DE ENTRADA AL HACER SCROLL */
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .glass-box.reveal-active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .glass-box::before {
@@ -747,7 +757,7 @@
 
     </div>
 
-    <!-- SCRIPTS INTERACTIVOS, LECTURA DINÁMICA DE URL Y MÚSICA -->
+    <!-- SCRIPTS INTERACTIVOS, LECTURA DINÁMICA DE URL, MÚSICA Y ANIMACIÓN AL HACER SCROLL -->
     <script>
         // 1. LECTURA DINÁMICA DE PARÁMETROS DE LA URL
         function cargarDatosInvitado() {
@@ -768,7 +778,6 @@
             document.getElementById('invitadoMesa').innerText = mesa.toLowerCase().includes('mesa') ? mesa : `Mesa # ${mesa}`;
         }
 
-        // Se ejecuta inmediatamente al cargar la página
         cargarDatosInvitado();
 
         // 2. INICIAR EXPERIENCIA Y REPRODUCIR MÚSICA
@@ -782,6 +791,9 @@
                 document.getElementById('welcome-screen').style.display = 'none';
                 document.getElementById('mainContainer').classList.add('visible');
                 audioBtn.style.display = 'flex';
+                
+                // Activar animación al hacer scroll inmediatamente después de abrir
+                initScrollReveal();
             }, 800);
 
             if (bgMusic) {
@@ -814,7 +826,28 @@
             isPlaying = !isPlaying;
         }
 
-        // 3. CUENTA REGRESIVA
+        // 3. ANIMACIÓN DE ENTRADA AL HACER SCROLL (SCROLL REVEAL)
+        function initScrollReveal() {
+            const boxes = document.querySelectorAll('.glass-box');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-active');
+                    }
+                });
+            }, observerOptions);
+
+            boxes.forEach(box => observer.observe(box));
+        }
+
+        // 4. CUENTA REGRESIVA
         const targetDate = new Date("2027-02-20T20:30:00").getTime();
 
         setInterval(function() {
@@ -834,7 +867,7 @@
             }
         }, 1000);
 
-        // 4. CANVAS DE ESTRELLAS ANIMADAS
+        // 5. CANVAS DE ESTRELLAS ANIMADAS
         const canvas = document.getElementById('starsCanvas');
         const ctx = canvas.getContext('2d');
 
