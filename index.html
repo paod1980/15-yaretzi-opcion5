@@ -183,16 +183,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            
-            /* ESTILOS DE ANIMACIÓN DE ENTRADA AL HACER SCROLL */
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .glass-box.reveal-active {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .glass-box::before {
@@ -201,6 +191,19 @@
             top: 0; left: 0; width: 100%; height: 3px;
             background: linear-gradient(90deg, transparent, #d4af37, #4a80e2, #d4af37, transparent);
             z-index: 3;
+        }
+
+        /* ANIMACIÓN DE SCROLL REPETITIVA (SUBIR Y BAJAR) */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(45px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* INTEGRACIÓN DE LA IMAGEN EN EL PRIMER BOX */
@@ -368,14 +371,12 @@
             letter-spacing: 1px;
         }
 
-        /* APLICACIÓN DE CURSIVA ELEGANTE 'GREAT VIBES' A NOMBRES */
         .family-card p {
-            font-family: 'Great Vibes', cursive !important;
-            font-size: 2.1rem !important;
             color: #ffffff;
+            font-size: 1.8rem;
             margin: 4px 0;
             line-height: 1.3;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            font-family: 'Great Vibes', cursive;
         }
 
         /* FECHA Y TEMPORIZADOR */
@@ -464,34 +465,15 @@
             color: #d1d5db;
             font-size: 0.95rem;
             margin-bottom: 15px;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
-        .event-info strong {
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
-            font-size: 0.85rem;
-            color: #8ab4f8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* TIPOGRAFÍA GREAT VIBES APLICADA A LOS NOMBRES DEL TEMPLO Y SALÓN */
-        .venue-name {
-            font-family: 'Great Vibes', cursive !important;
-            font-size: 2rem !important;
+        .event-info .venue-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
             color: #ffffff;
             display: block;
             margin: 4px 0;
-            line-height: 1.2;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        }
-
-        .venue-address {
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
-            font-size: 0.88rem;
-            color: #cbd5e1;
-            display: block;
-            margin-top: 4px;
         }
 
         .btn-map {
@@ -578,8 +560,6 @@
             .final-message { font-size: 3rem; }
             .welcome-title { font-size: 2.8rem; }
             .welcome-name { font-size: 3.6rem; }
-            .family-card p { font-size: 1.9rem !important; }
-            .venue-name { font-size: 1.8rem !important; }
         }
 
         @media (max-width: 420px) {
@@ -588,8 +568,6 @@
             .timer-block { padding: 12px 2px; }
             .timer-number { font-size: 1.5rem; }
             .timer-label { font-size: 0.65rem; }
-            .family-card p { font-size: 1.7rem !important; }
-            .venue-name { font-size: 1.6rem !important; }
         }
     </style>
 </head>
@@ -623,7 +601,7 @@
     <div class="container" id="mainContainer">
 
         <!-- PRIMER BOX: ENCABEZADO YARETZI CON FOTO DE FONDO -->
-        <div class="glass-box hero-box">
+        <div class="glass-box hero-box scroll-reveal">
             <div class="hero-bg-overlay"></div>
             <div class="hero-content">
                 <p class="header-tag">Te invito a celebrar</p>
@@ -641,7 +619,7 @@
         </div>
 
         <!-- SECCIÓN DE INVITADO, PASE INDIVIDUAL Y MESA -->
-        <div class="glass-box">
+        <div class="glass-box scroll-reveal">
             <div class="ticket-grid">
                 <div class="ticket-card">
                     <div class="ticket-icon"><i class="fas fa-user-check"></i></div>
@@ -668,25 +646,25 @@
         </div>
 
         <!-- PADRES Y PADRINOS -->
-        <div class="glass-box">
+        <div class="glass-box scroll-reveal">
             <div class="family-grid">
                 <div class="family-card">
                     <div class="family-icon"><i class="fas fa-heart"></i></div>
                     <h3>Mis Padres</h3>
-                    <p>Pablo Arturo Orozco Dorantes</p>
+                    <p style="margin-bottom: 12px;">Pablo Arturo Orozco Dorantes</p>
                     <p>Claudia Antonia Pacheco Chi</p>
                 </div>
                 <div class="family-card">
                     <div class="family-icon"><i class="fas fa-star"></i></div>
                     <h3>Mis Padrinos</h3>
-                    <p>Manuel Ferraez y Alma Pacheco</p>
+                    <p style="margin-bottom: 12px;">Manuel Ferraez y Alma Pacheco</p>
                     <p>Luis Domenzain y Berta Aldama</p>
                 </div>
             </div>
         </div>
 
         <!-- FECHA Y CUENTA REGRESIVA -->
-        <div class="glass-box">
+        <div class="glass-box scroll-reveal">
             <div class="event-date-header">
                 <i class="far fa-calendar-alt"></i> Sábado, 20 de Febrero de 2027
             </div>
@@ -714,18 +692,18 @@
         </div>
 
         <!-- UBICACIONES CON ICONOS INTEGRADOS -->
-        <div class="glass-box">
+        <div class="glass-box scroll-reveal">
             <div class="event-grid">
                 <!-- IGLESIA -->
                 <div class="event-card">
                     <div>
                         <div class="event-icon"><i class="fas fa-church"></i></div>
                         <h3 class="event-title">Ceremonia Religiosa</h3>
-                        <div class="event-info">
+                        <p class="event-info">
                             <strong>Hora:</strong> 20:30 hrs<br>
                             <strong>Iglesia:</strong> <span class="venue-name">San José Obrero</span>
-                            <span class="venue-address">Calle 133 No. 516 (esq. Calle 54), Col. San José Tecoh II, C.P. 97299, Mérida, Yuc.</span>
-                        </div>
+                            Calle 133 No. 516 (esq. Calle 54), Col. San José Tecoh II, C.P. 97299, Mérida, Yuc.
+                        </p>
                     </div>
                     <a href="https://maps.google.com/?q=San+Jose+Obrero+San+Jose+Tecoh+Merida" target="_blank" class="btn-map">
                         <i class="fas fa-map-marker-alt"></i> Ver en Maps
@@ -737,11 +715,11 @@
                     <div>
                         <div class="event-icon"><i class="fas fa-glass-cheers"></i></div>
                         <h3 class="event-title">Recepción</h3>
-                        <div class="event-info">
+                        <p class="event-info">
                             <strong>Hora:</strong> 21:30 hrs<br>
                             <strong>Local:</strong> <span class="venue-name">Sala de Fiestas Los Ceibos</span>
-                            <span class="venue-address">Calle 50 x 149 y 151, Cinco Colonias, Mérida, Yuc.</span>
-                        </div>
+                            Calle 50 x 149 y 151, Cinco Colonias, Mérida, Yuc.
+                        </p>
                     </div>
                     <a href="https://maps.google.com/?q=Sala+de+Fiestas+Los+Ceibos+Cinco+Colonias+Merida" target="_blank" class="btn-map">
                         <i class="fas fa-map-marker-alt"></i> Ver en Maps
@@ -751,13 +729,13 @@
         </div>
 
         <!-- MENSAJE FINAL -->
-        <div class="glass-box final-message-card">
+        <div class="glass-box final-message-card scroll-reveal">
             <h2 class="final-message">¡Contamos con tu presencia!</h2>
         </div>
 
     </div>
 
-    <!-- SCRIPTS INTERACTIVOS, LECTURA DINÁMICA DE URL, MÚSICA Y ANIMACIÓN AL HACER SCROLL -->
+    <!-- SCRIPTS INTERACTIVOS, SCROLL REPETITIVO, LECTURA DINÁMICA DE URL Y MÚSICA -->
     <script>
         // 1. LECTURA DINÁMICA DE PARÁMETROS DE LA URL
         function cargarDatosInvitado() {
@@ -778,6 +756,7 @@
             document.getElementById('invitadoMesa').innerText = mesa.toLowerCase().includes('mesa') ? mesa : `Mesa # ${mesa}`;
         }
 
+        // Se ejecuta inmediatamente al cargar la página
         cargarDatosInvitado();
 
         // 2. INICIAR EXPERIENCIA Y REPRODUCIR MÚSICA
@@ -791,9 +770,6 @@
                 document.getElementById('welcome-screen').style.display = 'none';
                 document.getElementById('mainContainer').classList.add('visible');
                 audioBtn.style.display = 'flex';
-                
-                // Activar animación al hacer scroll inmediatamente después de abrir
-                initScrollReveal();
             }, 800);
 
             if (bgMusic) {
@@ -826,26 +802,22 @@
             isPlaying = !isPlaying;
         }
 
-        // 3. ANIMACIÓN DE ENTRADA AL HACER SCROLL (SCROLL REVEAL)
-        function initScrollReveal() {
-            const boxes = document.querySelectorAll('.glass-box');
-            
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
+        // 3. DETECTOR DE SCROLL REPETITIVO (REINICIA AL SUBIR Y BAJAR)
+        const observerOptions = {
+            threshold: 0.15
+        };
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('reveal-active');
-                    }
-                });
-            }, observerOptions);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, observerOptions);
 
-            boxes.forEach(box => observer.observe(box));
-        }
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
         // 4. CUENTA REGRESIVA
         const targetDate = new Date("2027-02-20T20:30:00").getTime();
